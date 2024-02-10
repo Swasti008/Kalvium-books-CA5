@@ -6,9 +6,9 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Register from "./Components/Register";
 
 function App() {
-  const [input, setInput] = useState("");
-  const [showSearchBar, setShowSearchBar] = useState(true);
-  const location = useLocation();
+  const [input, setInput] = useState(""); //for setting input entered by the user.
+  const [showSearchBar, setShowSearchBar] = useState(true); //for not displaying the Search bar in registeration page.
+  const location = useLocation(); //for getting the location pathname
 
   const handleInput = (e) => {
     setInput(e.target.value.toLowerCase());

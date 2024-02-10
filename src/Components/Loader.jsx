@@ -1,3 +1,4 @@
+//for loader
 import React from "react";
 import LoaderImage from "../assets/leafLoader.svg";
 import LeafBack from "../assets/bg-leaves.png";

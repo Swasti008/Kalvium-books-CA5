@@ -1,3 +1,4 @@
+//for footer 
 import React from "react";
 import LeafBack from "../assets/bg-leaves.png";
 import { Link } from "react-router-dom";

@@ -25,23 +25,27 @@ export default function Content({ input }) {
         setLoading(false);
       });
   };
+
   useEffect(() => {
     getData();
   }, []);
+
   if (loading) {
     return <Loader />;
   }
 
+  //for filtering the books data according to the input.
   const filteredArrayOfBooks = data.books.filter((book) =>
     book.title.toLowerCase().includes(input)
   );
 
   return (
     <>
+      {/* for showing the result books name */}
       {input && (
         <div className="md:flex md:flex-col justify-center items-center hidden">
-            {filteredArrayOfBooks.length !== 0 &&
-          <div className="absolute right-10 top-44 h-64 w-44 p-1 m-1 z-5 bg-white bg-opacity-70 rounded">
+          {filteredArrayOfBooks.length !== 0 && (
+            <div className="absolute right-10 top-44 h-64 w-44 p-1 m-1 z-5 bg-white bg-opacity-70 rounded">
               {filteredArrayOfBooks.map((eachBook) => (
                 <div key={eachBook.id} className="cursor-pointer">
                   <h1 className="font-thin text-center p-1 m-2 text-xs bg-red-300 rounded-r">
@@ -49,7 +53,8 @@ export default function Content({ input }) {
                   </h1>
                 </div>
               ))}
-          </div>}
+            </div>
+          )}
         </div>
       )}
       <div
@@ -74,7 +79,7 @@ export default function Content({ input }) {
       </div>
 
       <div className="flex flex-wrap gap-20 justify-center m-10">
-        {(filteredArrayOfBooks.length == 0 && input) && (
+        {filteredArrayOfBooks.length == 0 && input && (
           <h1 className="font-body m-28 sm:m-36  text-2xl md:text-5xl text-center text-red-500">
             No Result found for {input}
           </h1>

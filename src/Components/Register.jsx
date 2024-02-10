@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import LeafBack from "../assets/bg-leaves.png";
 import Error from "../assets/error.png";
@@ -7,10 +8,15 @@ function App() {
   const form = useForm();
   const { register, handleSubmit, watch, formState } = form;
   const { errors } = formState;
+  const [registeredData, setRegisteredData] = useState([]);
 
   const onSubmit = (data) => {
-    console.log("Form Submitted", data);
+    setRegisteredData(data);
   };
+
+  useEffect(() => {
+    console.log(registeredData);
+  }, [registeredData]);
 
   return (
     <>
@@ -19,6 +25,9 @@ function App() {
           <div className="shadow-2xl bg-white p-16 absolute z-10 rounded-lg text-green-500 font-bold flex flex-col items-center gap-12 ml-2 mr-2 md:m-0 ">
             <h1 className="font-body text-3xl md:text-4xl text-center">
               Thanks for Signing up
+            </h1>
+            <h1 className="font-body text-2xl md:text-3xl text-center text-red-400">
+              {registeredData.name}
             </h1>
             <Link to="/">
               <button className="bg-blue-500 shadow-lg shadow-blue-500/50 p-3 rounded-md text-white font-semibold font-body text-2xl hover:bg-blue-600">
